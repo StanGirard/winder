@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Winder - Expand Your Network with Qualified Strangers</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+    <style>
+        :root {
+            --primary-color: #4A4AFF;
+            --secondary-color: #FF4A8D;
+            --text-color: #333;
+            --bg-color: #F8F9FA;
+            --card-bg: #FFFFFF;
+        }
+
+        body,
+        html {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: var(--card-bg);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .hero {
+            padding: 150px 0 100px;
+            text-align: center;
+            background: linear-gradient(135deg, #4A4AFF 0%, #FF4A8D 100%);
+            color: white;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        }
+
+        .hero h1 {
+            font-size: 64px;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+            color: white;
+        }
+
+        .hero .tagline {
+            font-size: 24px;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            line-height: 1.4;
+            font-weight: 300;
+            color: white;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: var(--primary-color);
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            font-size: 18px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .features {
+            padding: 100px 0;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .feature-card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .waitlist {
+            background: var(--card-bg);
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .waitlist h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .waitlist-form {
+            display: flex;
+            justify-content: center;
+            margin-top: 40px;
+        }
+
+        .waitlist-form input {
+            padding: 15px 20px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 30px 0 0 30px;
+            width: 300px;
+        }
+
+        .waitlist-form button {
+            padding: 15px 30px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .waitlist-form button:hover {
+            background-color: #3A3AFF;
+        }
+
+        footer {
+            background: var(--text-color);
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 48px;
+            }
+
+            .hero .tagline {
+                font-size: 20px;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .waitlist-form {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .waitlist-form input,
+            .waitlist-form button {
+                width: 100%;
+                max-width: 300px;
+                border-radius: 30px;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">Winder</div>
+            <div class="nav-links">
+                <a href="#features">Features</a>
+                <a href="#waitlist">Join Waitlist</a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Winder</h1>
+            <p class="tagline">Tinder but for expanding your professional network</p>
+            <a href="#waitlist" class="cta-button">Join the Network Revolution</a>
+        </div>
+    </section>
+
+    <section id="features" class="features">
+        <div class="container">
+            <h2>Why Winder Works</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Curated Connections</h3>
+                    <p>Our smart algorithm matches you with professionals who can truly add value to your network.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🤝</div>
+                    <h3>Meaningful Meetups</h3>
+                    <p>Turn strangers into valuable contacts through purposeful, face-to-face or virtual interactions.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">��</div>
+                    <h3>Career Catalyst</h3>
+                    <p>Accelerate your professional growth through diverse perspectives and unexpected opportunities.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="waitlist" class="waitlist">
+        <div class="container">
+            <h2>Be a Pioneer in Professional Networking</h2>
+            <p>Join our waitlist and be among the first to expand your network in ways you never thought possible.</p>
+            <form class="waitlist-form" id="waitlistForm">
+                <button type="submit">Join the Waitlist</button>
+            </form>
+        </div>
+    </section>
+
+    <script>
+        document.getElementById('waitlistForm').addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent the default form submission
+            window.location.href = 'https://forms.gle/42zUXSyrfhbjj8wu6';
+        });
+    </script>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Winder. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        gsap.from('.hero h1', {
+            opacity: 1,
+            y: 50,
+            duration: 1,
+            scrollTrigger: {
+                trigger: '.hero',
+                start: 'top 80%',
+            }
+        });
+
+        gsap.from('.hero .tagline', {
+            opacity: 1,
+            y: 50,
+            duration: 1,
+            delay: 0.3,
+            scrollTrigger: {
+                trigger: '.hero',
+                start: 'top 80%',
+            }
+        });
+
+        gsap.from('.cta-button', {
+            opacity: 1,
+            y: 50,
+            duration: 1,
+            delay: 0.6,
+            scrollTrigger: {
+                trigger: '.hero',
+                start: 'top 80%',
+            }
+        });
+
+        gsap.from('.feature-card', {
+            opacity: 0,
+            y: 50,
+            duration: 0.8,
+            stagger: 0.2,
+            scrollTrigger: {
+                trigger: '.feature-grid',
+                start: 'top 80%',
+            }
+        });
+
+        gsap.from('.waitlist h2, .waitlist p, .waitlist-form', {
+            opacity: 0,
+            y: 50,
+            duration: 0.8,
+            stagger: 0.2,
+            scrollTrigger: {
+                trigger: '.waitlist',
+                start: 'top 80%',
+            }
+        });
+    </script>
+</body>
+
+</html>
